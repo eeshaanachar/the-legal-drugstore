@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+nav {
+  background-color: #111;
+}
+
+nav .navbar-brand {
+  font-family: 'Lobster', cursive;
+}
+
+nav i {
+  color: white;
+}
+
+header {
+  background-image: url("../images/jumbotron.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  height: calc(100vh - 3.5rem);
+}
+
+header > .container {
+  position: relative;
+  top: 36vh;
+}
+
+header h1 {
+  color: white;
+  font-family: 'Lobster', cursive;
+}
+
+@media (min-width: 768px) {
+  header h1 {
+    font-size: 4rem;
+  }
+}
+
+header span {
+  color: white;
+  text-align: justify;
+}
+
+footer {
+  background-color: #111;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+/*# sourceMappingURL=style-eeshaan.css.map */
