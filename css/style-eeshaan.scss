@@ -17,11 +17,11 @@ header {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    height: calc(100vh - 3.5rem);
+    min-height: calc(100vh - 3.5rem);
 
     > .container {
-        position: relative;
-        top: 36vh;
+        padding-top: 36vh;
+        padding-bottom: 1rem;
     }
 
     h1 {
