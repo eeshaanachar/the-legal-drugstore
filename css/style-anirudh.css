@@ -1,4 +1,18 @@
 section:nth-child(even) {
-  padding: 2rem 0;
+	/*font-family: Verdana, Geneva, sans-serif;
+
+	padding: 2rem 0;
+/*
+.container{
+	text-align: center;
 }
+*/
+}
+.btn{
+		height: 50px;
+		border-color: #000;
+		border-radius: 15px;
+		
+}
+
 /*# sourceMappingURL=style-anirudh.css.map */
