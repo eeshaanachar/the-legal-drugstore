@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+nav {
+    background-color: #111;
+
+    .navbar-brand {
+        font-family: 'Lobster', cursive;
+    }
+
+    i {
+        color: white;
+    }
+}
+
+header {
+    background-image: url('jumbotron.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    min-height: calc(100vh - 3.5rem);
+
+    > .container {
+        padding-top: 36vh;
+        padding-bottom: 1rem;
+    }
+
+    h1 {
+        color: white;
+        font-family: 'Lobster', cursive;
+        
+        @media(min-width: 768px) {
+            font-size: 4rem;
+        }
+    }
+
+    span {
+        color: white;
+        text-align: justify;
+    }
+}
+
+section {
+    padding: 2rem 0;
+
+    &:nth-child(odd) {
+        background-color: blanchedalmond;
+    }
+
+    &:nth-child(even) {
+        background-color: burlywood;
+    }
+
+    h2 { grid-area: title; }
+
+    .caption { grid-area: caption; }
+
+    .description {
+        grid-area: description;
+        text-align: justify;
+    }
+
+    img {
+        width: 100%;
+        margin: 1rem auto;
+        
+        @media(min-width: 768px) {
+            grid-area: image;
+            width: 80%;
+            margin: 0 0 auto auto;
+        }
+    }
+
+    .btn {
+        grid-area: link;
+        border: 0.25rem solid #1e7e34;
+        height: fit-content;
+        width: fit-content;
+        padding: 0.5rem 2rem;
+        background-color: white;
+        color: #28a745;
+        text-transform: uppercase;
+        font-weight: 700;
+        transition: 300ms;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @media(min-width: 768px) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas: 
+                "title ."
+                "caption image"
+                "description image"
+                "description image"
+                "link image";
+        }
+
+        @media(min-width: 992px) {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas: 
+                "title title image"
+                "caption caption image"
+                "description description image"
+                "description description image"
+                "link link image";
+        }
+    }
+}
+
+footer {
+    background-color: #111;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}

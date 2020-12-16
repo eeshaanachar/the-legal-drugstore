@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+nav {
+  background-color: #111;
+}
+
+nav .navbar-brand {
+  font-family: 'Lobster', cursive;
+}
+
+nav i {
+  color: white;
+}
+
+header {
+  background-image: url("jumbotron.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  min-height: calc(100vh - 3.5rem);
+}
+
+header > .container {
+  padding-top: 36vh;
+  padding-bottom: 1rem;
+}
+
+header h1 {
+  color: white;
+  font-family: 'Lobster', cursive;
+}
+
+@media (min-width: 768px) {
+  header h1 {
+    font-size: 4rem;
+  }
+}
+
+header span {
+  color: white;
+  text-align: justify;
+}
+
+section {
+  padding: 2rem 0;
+}
+
+section:nth-child(odd) {
+  background-color: blanchedalmond;
+}
+
+section:nth-child(even) {
+  background-color: burlywood;
+}
+
+section h2 {
+  grid-area: title;
+}
+
+section .caption {
+  grid-area: caption;
+}
+
+section .description {
+  grid-area: description;
+  text-align: justify;
+}
+
+section img {
+  width: 100%;
+  margin: 1rem auto;
+}
+
+@media (min-width: 768px) {
+  section img {
+    grid-area: image;
+    width: 80%;
+    margin: 0 0 auto auto;
+  }
+}
+
+section .btn {
+  grid-area: link;
+  border: 0.25rem solid #1e7e34;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.5rem 2rem;
+  background-color: white;
+  color: #28a745;
+  text-transform: uppercase;
+  font-weight: 700;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+section .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (min-width: 768px) {
+  section .container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: "title ." "caption image" "description image" "description image" "link image";
+  }
+}
+
+@media (min-width: 992px) {
+  section .container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: "title title image" "caption caption image" "description description image" "description description image" "link link image";
+  }
+}
+
+footer {
+  background-color: #111;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */
