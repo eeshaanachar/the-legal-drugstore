@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <title>The Legal Drugstore</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark sticky-top">
+        <div class="container">
+            <a href="#top" class="navbar-brand">The Legal Drugstore</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navMenu">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ml-auto">
+                    {% for product in products %}
+                        <li class="nav-item"><a class="nav-link" href="#drug{{ product.id }}">{{ product.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+	
+    <header>
+        <div class="container d-flex flex-column align-items-center">
+            <h1>The Legal Drugstore</h1>
+            <span class="m-4">During this pandemic, we advise you to stay home as much as possible and follow the social distancing norms when out. Our team and many others across the globe are working hard, and a vaccine should be available soon. Meanwhile, you can scroll down to browse through our popular drug choices for your various needs.</span>
+            <a href="https://www.worldometers.info/coronavirus/" class="btn btn-danger text-uppercase" target="_blank">Latest Coronavirus Updates</a>
+        </div>
+    </header>    
+
+    {% for product in products %}
+        <section id="drug{{ product.id }}">
+            <div class="container">
+                <h2>{{ product.name }}</h2>
+                <img src="{{ url_for('static', filename='images/') }}{{ product.id }}.jpg" alt="">
+                <p class="caption">{{ product.short_desc }}.</p>
+                <p class="description">{{ product.long_desc }}</p>
+                <a href="{{ product.link }}" target="_blank" class="btn btn-success">Buy Now</a>
+            </div>
+        </section>
+    {% endfor %}
+
+    <footer>
+        Copyright &copy; 2020 The Legal Drugstore
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js')}}"></script>
+    <script src="https://use.fontawesome.com/ec982decd0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
