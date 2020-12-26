@@ -11,6 +11,7 @@ nav i {
   color: white;
 }
 
+
 header {
   background-image: url("jumbotron.jpg");
   background-attachment: fixed;
@@ -129,10 +130,7 @@ section .container {
   }
 }
 
-footer {
-  background-color: #111;
-  color: white;
-  padding: 2rem;
-  text-align: center;
-}
+
+
+
 /*# sourceMappingURL=style.css.map */
