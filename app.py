@@ -1,10 +1,10 @@
-import sqlite3
 import smtplib
-from email.message import EmailMessage
-from flask import Flask, jsonify, render_template, request
+import sqlite3
+from flask import Flask, jsonify, render_template, request, flash, redirect, url_for
+from secrets import ServerCredentials, APP_SECRET
 
 app = Flask(__name__)
-app.secret_key = 'EAN Project'
+app.secret_key = APP_SECRET
 
 @app.route('/')
 def home():
@@ -15,12 +15,11 @@ def home():
     return render_template('index.html', products=products)
 
 @app.route('/api')
-def foo():
+def api():
     response = {
         'endpoints' : {
             '/all' : 'get details of all drugs',
             '/<id>' : 'get details of drug with given id',
-            '/images/<id>.jpg' : 'get image of drug with given id', # Must be served by NGINX
         }
     }
     return jsonify(response)
@@ -46,24 +45,27 @@ def particular_item(id):
         response.status_code = 400
     return response
     
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    return render_template('contact.html')
-
-@app .route('/form', methods = ["POST"])
-def form():
-    email = request.form.get("email")
-    ph_number = request.form.get("number")
-    name = request.form.get("name")
-    message = request.form.get("message")
-    complete_message = "Email: {}\nPhone Number: {}\nName: {}\nMessage: {}".format(email, ph_number, name, message)
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
-    server.login("legaldrugstore2020@gmail.com", 'LegalDrugstore@123')
-    server.sendmail("legaldrugstore2020@gmail.com", "legaldrugstore2020@gmail.com", complete_message)
-    return_message = "Message sent successfully!! Our staffs will contact you shortly.."
-    return render_template('form.html', return_msg = return_message)
-
+    if request.method == 'GET':
+        return render_template('contact.html')
+    try:
+        client_email = request.form.get("email")
+        contact = request.form.get("number")
+        name = request.form.get("name")
+        message = request.form.get("message")
+    except:
+        response = jsonify({'message': 'required attributes missing'})
+        response.status_code = 400
+        return response
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as session:
+        session.login(ServerCredentials.server_email, ServerCredentials.server_password)
+        server_message = f'Subject: Somebody contacted you on your website\n\nName: {name}\nEmail: {client_email}\nContact Number: {contact}\nMessage: {message}'
+        session.sendmail(ServerCredentials.server_email, ServerCredentials.server_email, server_message)
+        client_message = f'Subject: Thank you for contacting The Legal Drugstore\n\nWe have received your message and a representative will contact you shortly'
+        session.sendmail(ServerCredentials.server_email, client_email, client_message)
+    flash('Message sent successfully!', 'success')
+    return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True)

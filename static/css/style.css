@@ -11,7 +11,6 @@ nav i {
   color: white;
 }
 
-
 header {
   background-image: url("jumbotron.jpg");
   background-attachment: fixed;
@@ -75,7 +74,7 @@ section img {
   section img {
     grid-area: image;
     width: 80%;
-    margin: 0 0 auto auto;
+    margin: auto 0 auto auto;
   }
 }
 
@@ -130,7 +129,23 @@ section .container {
   }
 }
 
+body {
+  position: relative;
+  min-height: 100vh;
+}
 
+body footer {
+  background-color: #111;
+  color: white;
+  height: 6rem;
+  padding-top: 2rem;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 
-
+body footer + div {
+  height: 6rem;
+}
 /*# sourceMappingURL=style.css.map */

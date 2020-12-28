@@ -1,1 +1,6 @@
-*.map
+*css.map
+
+__pycache__
+.vscode
+
+secrets.py
