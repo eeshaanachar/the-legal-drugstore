@@ -1,9 +1,10 @@
 import sqlite3
 import smtplib
+from email.message import EmailMessage
 from flask import Flask, jsonify, render_template, request
-from forms import ContactForm
 
 app = Flask(__name__)
+app.secret_key = 'EAN Project'
 
 @app.route('/')
 def home():
@@ -55,7 +56,7 @@ def form():
     ph_number = request.form.get("number")
     name = request.form.get("name")
     message = request.form.get("message")
-    complete_message = "Email: " + email + "\nPhone Number: " + ph_number + "\nName: " + name + "\nMessage: " + message
+    complete_message = "Email: {}\nPhone Number: {}\nName: {}\nMessage: {}".format(email, ph_number, name, message)
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.starttls()
     server.login("legaldrugstore2020@gmail.com", 'LegalDrugstore@123')
