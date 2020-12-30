@@ -10,30 +10,29 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container">
-            <a href="{{ url_for('home') }}" class="navbar-brand">The Legal Drugstore</a>
+            <a href="{{ url_for('landing') }}" class="navbar-brand">The Legal Drugstore</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navMenu">
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </button>
             <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('store') }}">Store</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                          For Devs
-                        </a>
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">For Devs</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="{{ url_for('api') }}" target="_blank">Public APIs</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="https://github.com/eeshaanachar/the-legal-drugstore" target="_blank">Website Source Code</a>
+                          <a class="dropdown-item" href="https://github.com/eeshaanachar/the-legal-drugstore" target="_blank">Source Code</a>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <div style="height: 3.5rem;"></div>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% for category, message in messages %}
@@ -43,12 +42,11 @@
         {% endfor %}
     {% endwith %}
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+    {% block content %}{% endblock %}
 
     <footer>
-        Copyright &copy; 2020 The Legal Drugstore
+        <p>This website is our miniproject for the CS735 course at JSSSTU, Mysore</p>
+        <p>Developed with &#10084; by Anirudh, Eeshaan and Navneet
     </footer>
     <div></div>
 

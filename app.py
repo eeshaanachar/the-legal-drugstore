@@ -7,12 +7,16 @@ app = Flask(__name__)
 app.secret_key = APP_SECRET
 
 @app.route('/')
-def home():
+def landing():
+    return render_template('landing.html')
+
+@app.route('/store')
+def store():
     with sqlite3.connect('database.db') as connection:
         results = connection.execute('select * from drugs').fetchall()
     keys = 'id name short_desc long_desc link'.split()
     products = [dict(zip(keys, result)) for result in results]
-    return render_template('index.html', products=products)
+    return render_template('store.html', products=products)
 
 @app.route('/api')
 def api():
@@ -65,7 +69,7 @@ def contact():
         client_message = f'Subject: Thank you for contacting The Legal Drugstore\n\nWe have received your message and a representative will contact you shortly'
         session.sendmail(ServerCredentials.server_email, client_email, client_message)
     flash('Message sent successfully!', 'success')
-    return redirect(url_for('home'))
+    return redirect(url_for('store'))
 
 if __name__ == '__main__':
     app.run(debug=True)

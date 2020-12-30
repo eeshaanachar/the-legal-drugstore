@@ -1,23 +1,10 @@
 {% extends "layout.html" %}
-
 {% block content %}
-    <header>
+    <header id="landing-page-header">
         <div class="container d-flex flex-column align-items-center">
-            <h1 class="mt-5">The Legal Drugstore</h1>
+            <h1>The Legal Drugstore</h1>
             <span class="m-4">During this pandemic, we advise you to stay home as much as possible and follow the social distancing norms when out. Our team and many others across the globe are working hard, and a vaccine should be available soon. Meanwhile, you can scroll down to browse through our popular drug choices for your various needs.</span>
             <a href="https://www.worldometers.info/coronavirus/" class="btn btn-danger text-uppercase" target="_blank">Latest Coronavirus Updates</a>
         </div>
-    </header>    
-
-    {% for product in products %}
-        <section>
-            <div class="container">
-                <h2>{{ product.name }}</h2>
-                <img src="/static/images/{{ product.id }}.jpg" alt="">
-                <p class="caption">{{ product.short_desc }}.</p>
-                <p class="description">{{ product.long_desc }}</p>
-                <a href="{{ product.link }}" target="_blank" class="btn btn-success">Buy Now</a>
-            </div>
-        </section>
-    {% endfor %}
+    </header>
 {% endblock %}
